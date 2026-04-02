@@ -221,7 +221,7 @@ class="md:hidden fixed top-4 left-4 z-50 bg-white text-black px-3 py-2 rounded s
             <p class="text-gray-300 leading-relaxed mb-6">
                 Saya adalah seorang mahasiswa yang memiliki minat dalam dunia teknologi,
                 khususnya dalam pembuatan website. Saya senang belajar hal baru dan terus
-                mengembangkan skill saya dalam bidang IT.
+                mengembangkan skil saya dalam bidang IT.
             </p>
 
             <p class="text-gray-300 leading-relaxed mb-8">

@@ -2,10 +2,16 @@
 
 @section('content')
 
+<button onclick="toggleSidebar()" 
+class="md:hidden fixed top-4 left-4 z-50 bg-white text-black px-3 py-2 rounded shadow">
+☰
+</button>
+
 <div class="flex">
 
     <!-- SIDEBAR -->
-    <div class="w-64 bg-[#0f172a] text-white p-6 fixed h-screen flex flex-col">
+    <div id="sidebar"
+         class="w-64 bg-[#0f172a] text-white p-6 fixed md:static top-0 left-0 h-full md:h-screen flex flex-col z-50 transform -translate-x-full md:translate-x-0 transition duration-300">
 
         <!-- FOTO + NAMA -->
         <div class="text-center mb-8">
@@ -72,8 +78,7 @@
 
 
     <!-- SCROLL AREA -->
-    <div class="ml-64 w-full h-screen overflow-y-scroll scroll-smooth snap-y snap-mandatory">
-
+    <div class="w-full md:ml-64 h-screen overflow-y-scroll scroll-smooth snap-y snap-mandatory">
         <!-- WELCOME -->
         <section id="welcome" class="h-screen snap-start relative">
 
@@ -85,9 +90,8 @@
             <div class="absolute inset-0 bg-black/50"></div>
 
             <!-- TEXT HERO -->
-            <div class="absolute inset-0 flex flex-col justify-center px-16 text-white">
-
-                <h1 class="text-6xl font-bold leading-tight">
+            <div class="absolute inset-0 flex flex-col justify-center px-6 md:px-16 text-white">
+               <h1 class="text-3xl md:text-6xl font-bold leading-tight">
                     Jejak <br> Ramadhan & Lebaran 🌙
                 </h1>
 
@@ -106,7 +110,7 @@
         Cerita Lebaran Saya
     </h1>
 
-    <div class="grid grid-cols-3 gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 
         <!-- CARD 1 -->
         <div class="bg-[#0f172a] p-4 rounded-xl shadow-lg">
@@ -192,9 +196,8 @@
 
         
         <!-- PROFIL -->
-<section id="sosmed" class="h-screen snap-start bg-[#020617] flex items-center text-white px-16">
-
-    <div class="grid grid-cols-2 gap-10 items-center w-full">
+<section id="sosmed" class="h-screen snap-start bg-[#020617] flex items-center text-white px-6 md:px-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center w-full">
 
         <!-- FOTO -->
         <div class="flex justify-center">
@@ -262,7 +265,7 @@
 </div>
 <!-- MODAL 1 -->
 <div id="modal1" class="fixed inset-0 bg-black/70 hidden items-center justify-center z-50">
-    <div class="bg-white text-black p-6 rounded-lg w-[500px] relative">
+    <div class="bg-white text-black p-6 rounded-lg w-[90%] md:w-[500px] relative">
         <button onclick="closeModal('modal1')" class="absolute top-2 right-3 text-xl">✖</button>
         <h2 class="text-xl font-bold mb-3">Lebaran Pertama</h2>
         <p>
@@ -275,7 +278,7 @@
 
 <!-- MODAL 2 -->
 <div id="modal2" class="fixed inset-0 bg-black/70 hidden items-center justify-center z-50">
-    <div class="bg-white text-black p-6 rounded-lg w-[500px] relative">
+    <div class="bg-white text-black p-6 rounded-lg w-[90%] md:w-[500px] relative">
         <button onclick="closeModal('modal2')" class="absolute top-2 right-3 text-xl">✖</button>
         <h2 class="text-xl font-bold mb-3">Lebaran Kedua</h2>
         <p>
@@ -287,7 +290,7 @@
 
 <!-- MODAL 3 -->
 <div id="modal3" class="fixed inset-0 bg-black/70 hidden items-center justify-center z-50">
-    <div class="bg-white text-black p-6 rounded-lg w-[500px] relative">
+    <div class="bg-white text-black p-6 rounded-lg w-[90%] md:w-[500px] relative">
         <button onclick="closeModal('modal3')" class="absolute top-2 right-3 text-xl">✖</button>
         <h2 class="text-xl font-bold mb-3">Lebaran Ketiga</h2>
         <p>
@@ -295,4 +298,10 @@
         </p>
     </div>
 </div>
+<script>
+function toggleSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    sidebar.classList.toggle('-translate-x-full');
+}
+</script>
 @endsection

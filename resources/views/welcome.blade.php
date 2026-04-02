@@ -3,7 +3,7 @@
 @section('content')
 
 <button onclick="toggleSidebar()" 
-class="md:hidden fixed top-4 left-4 z-50 bg-white text-black px-3 py-2 rounded shadow">
+class="md:hidden fixed top-4 left-4 z-[9999] bg-white text-black px-3 py-2 rounded shadow">
 ☰
 </button>
 
@@ -12,7 +12,10 @@ class="md:hidden fixed top-4 left-4 z-50 bg-white text-black px-3 py-2 rounded s
     <!-- SIDEBAR -->
     <div id="sidebar"
          class="w-64 bg-[#0f172a] text-white p-6 fixed md:static top-0 left-0 h-full md:h-screen flex flex-col z-50 transform -translate-x-full md:translate-x-0 transition duration-300">
-
+<button onclick="toggleSidebar()" 
+class="md:hidden absolute top-4 right-4 text-white text-2xl">
+✖
+</button>
         <!-- FOTO + NAMA -->
         <div class="text-center mb-8">
             <img src="{{ asset('images/profile.jpeg') }}"
@@ -298,10 +301,21 @@ class="md:hidden fixed top-4 left-4 z-50 bg-white text-black px-3 py-2 rounded s
         </p>
     </div>
 </div>
+
 <script>
 function toggleSidebar() {
     const sidebar = document.getElementById('sidebar');
     sidebar.classList.toggle('-translate-x-full');
 }
+
+// klik luar sidebar = nutup
+document.addEventListener('click', function(e) {
+    const sidebar = document.getElementById('sidebar');
+    const button = document.querySelector('button');
+
+    if (!sidebar.contains(e.target) && !button.contains(e.target)) {
+        sidebar.classList.add('-translate-x-full');
+    }
+});
 </script>
 @endsection

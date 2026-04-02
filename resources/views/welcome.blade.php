@@ -2,7 +2,7 @@
 
 @section('content')
 
-<button onclick="toggleSidebar()" 
+<button id="menuBtn" onclick="toggleSidebar()" 
 class="md:hidden fixed top-4 left-4 z-[9999] bg-white text-black px-3 py-2 rounded shadow">
 ☰
 </button>
@@ -55,29 +55,31 @@ class="md:hidden absolute top-4 right-4 text-white text-2xl">
         <!-- MENU -->
        <div class="space-y-2">
 
-    <a href="#welcome" class="flex items-center space-x-3 p-2 rounded hover:bg-blue-500 transition">
+    <a href="#welcome" onclick="toggleSidebar()"
+       class="flex items-center space-x-3 p-2 rounded hover:bg-blue-500 transition">
         <i class="fas fa-home"></i>
         <span>Rumah</span>
     </a>
 
-    <a href="#dashboard" class="flex items-center space-x-3 p-2 rounded hover:bg-blue-500 transition">
+    <a href="#dashboard" onclick="toggleSidebar()"
+       class="flex items-center space-x-3 p-2 rounded hover:bg-blue-500 transition">
         <i class="fas fa-book-open"></i>
         <span>Halaman Cerita</span>
     </a>
 
-    <a href="#profil" class="flex items-center space-x-3 p-2 rounded hover:bg-blue-500 transition">
+    <a href="#profil" onclick="toggleSidebar()"
+       class="flex items-center space-x-3 p-2 rounded hover:bg-blue-500 transition">
         <i class="fas fa-images"></i>
         <span>Galeri</span>
     </a>
 
-    <a href="#sosmed" class="flex items-center space-x-3 p-2 rounded hover:bg-blue-500 transition">
+    <a href="#sosmed" onclick="toggleSidebar()"
+       class="flex items-center space-x-3 p-2 rounded hover:bg-blue-500 transition">
         <i class="fas fa-user-circle"></i>
         <span>Profil</span>
     </a>
 
 </div>
-
-    </div>
 
 
     <!-- SCROLL AREA -->
@@ -308,12 +310,16 @@ function toggleSidebar() {
     sidebar.classList.toggle('-translate-x-full');
 }
 
-// klik luar sidebar = nutup
 document.addEventListener('click', function(e) {
     const sidebar = document.getElementById('sidebar');
-    const button = document.querySelector('button');
+    const openBtn = document.getElementById('menuBtn');
+    const closeBtn = sidebar.querySelector('button'); // tombol ✖
 
-    if (!sidebar.contains(e.target) && !button.contains(e.target)) {
+    if (
+        !sidebar.contains(e.target) &&
+        !openBtn.contains(e.target) &&
+        !closeBtn.contains(e.target)
+    ) {
         sidebar.classList.add('-translate-x-full');
     }
 });
